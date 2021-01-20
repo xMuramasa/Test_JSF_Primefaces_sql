@@ -11,8 +11,8 @@
  - age         integer
  - income      integer
 
-BD: testtable
-tabla: customer2
+- *BD*: testtable
+- *tabla*: customer2
 
 ```sql
 CREATE TABLE IF NOT EXISTS `testtable`.`customer2` (
