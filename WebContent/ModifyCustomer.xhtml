@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<style>
+.centered {
+	position: relative;
+	margin: 0 auto;
+}
+</style>
+	<title>Update Customer</title>
+	<h:outputStylesheet name="/css/bootstrap.min.css" />
+</h:head>
+<body style="background-color: #8eedd7">
+	<h:form id="registrationForm" class="margin-auto">
+		<p:panel styleClass="centered"
+			style="height: 800px; width: 450px; border-raius=10px	">
+			<p:panelGrid columns="1" layout="flex"
+				style="width: 400px; margin: 0 auto;">
+
+				<f:facet name="header">
+					<p:row>
+						<p:column colspan="7">
+							<h1>Actualización Customer</h1>
+						</p:column>
+					</p:row>
+
+				</f:facet>
+				<p:column>
+					<h4>ID customer</h4>
+				</p:column>
+				<p:column>
+					<h:outputText id="id2" value="#{customerController.temp.id}"
+						label="id" style="font-size: large" />
+				</p:column>
+
+				<p:row>
+					<h4>Nombre customer</h4>
+					<p:inputText id="username"
+						value="#{customerController.temp.firstName}" label="username"
+						style="width: 100%;" />
+				</p:row>
+
+				<p:row>
+					<h4>Email</h4>
+					<p:inputText id="email" value="#{customerController.temp.email}"
+						style="width: 100%;" />
+
+				</p:row>
+
+				<p:row>
+					<h4>Fecha de Nacimiento</h4>
+					<p:calendar id="button" value="#{customerController.temp.birthday}"
+						showOn="button" />
+					<p:inputText id="id" value="#{customerController.temp.id}"
+						label="id" type="hidden" />
+					<p:outputLabel value="" />
+				</p:row>
+
+				<p:row>
+
+					<h4>Género</h4>
+					<h:selectOneRadio value="#{customerController.temp.gender}">
+						<f:selectItems value="#{customerController.genero}" />
+					</h:selectOneRadio>
+
+				</p:row>
+
+				<p:row>
+
+					<h4>Sueldo</h4>
+					<p:inputText id="sueldo" value="#{customerController.temp.income}"
+						required="true" style="width: 100%; " />
+					<p:message for="sueldo" display="text" />
+				</p:row>
+
+				<p:row>
+
+					<h4>Edad</h4>
+					<p:inputText id="edad" value="#{customerController.temp.age}"
+						required="true" style="width: 100%; " />
+					<p:message for="edad" display="text" />
+				</p:row>
+
+				<p:row>
+					<p:commandButton value="Actualizar Registro"
+						action="#{customerController.UpdateCustomer}"
+						update="registrationForm" style="margin-right:20px;"
+						class="btn btn-primary">
+						<p:confirm header="Confirmation" message="Está seguro?"
+							icon="pi pi-exclamation-triangle" />
+					</p:commandButton>
+
+					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+						<p:commandButton value="Si" type="button"
+							styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+						<p:commandButton value="No" type="button"
+							styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+					</p:confirmDialog>
+
+				</p:row>
+
+				<p:row>
+					<p:commandButton action="index.xhtml?faces-redirect=true"
+						value="Registro Customers" style="margin-right:20px;"
+						class="btn btn-primary">
+					</p:commandButton>
+					<p:commandButton action="Customers.xhtml?faces-redirect=true"
+						value="Vista Customers" style="margin-right:20px;"
+						class="btn btn-primary">
+					</p:commandButton>
+					
+					<p:commandButton action="graphsCustomers.xhtml?faces-redirect=true"
+						value="Gráficos Customers" style="margin-right:20px;"
+						class="btn btn-primary">
+					</p:commandButton>
+				</p:row>
+			</p:panelGrid>
+		</p:panel>
+	</h:form>
+
+</body>
+</html>

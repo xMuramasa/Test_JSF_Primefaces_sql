@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<style>
+.centered {
+	position: relative;
+	margin: 5% auto;
+}
+</style>
+	<title>Customers</title>
+	<h:outputStylesheet name="/css/bootstrap.min.css" />
+</h:head>
+
+
+<h:body style="background-color: #8eedd7">
+	<div class="container text-center" style="margin: 4% auto">
+		<div class="row">
+			<div class="col"></div>
+			<div class="col-6">
+
+				<h:form id="userForm">
+					<p:dataTable value="#{customerController.customers}" var="customer"
+						filteredValue="#{customerController.filteredCustomers}"
+						globalFilterFunction="#{customerController.globalFilterFunction}"
+						widgetVar="customersTable" class="table table-bordered">
+
+						<f:facet name="header">
+							<p:row>
+								<p:column colspan="7">
+									<h1>Vista Customers</h1>
+								</p:column>
+							</p:row>
+
+						</f:facet>
+
+						<f:facet name="header">
+							<p:row>
+								<p:outputPanel>
+									<h:outputText value="Buscar por nombre o correo: " />
+									<p:inputText id="globalFilter"
+										onkeyup="PF('customersTable').filter()" style="width:150px"
+										placeholder="Enter keyword" />
+								</p:outputPanel>
+
+								<p:commandButton action="index.xhtml?faces-redirect=true"
+									value="Registro Usuarios" class="btn btn-primary">
+								</p:commandButton>
+
+								<p:commandButton
+									action="graphsCustomers.xhtml?faces-redirect=true"
+									value="Gráficos Customers" style="margin-right:20px;"
+									class="btn btn-primary">
+								</p:commandButton>
+
+							</p:row>
+
+						</f:facet>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Customer ID"></h:outputText>
+							</f:facet>
+							<h:outputText value="#{customer.id}"></h:outputText>
+						</p:column>
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Customer Name"></h:outputText>
+							</f:facet>
+							<h:outputText value="#{customer.firstName}"></h:outputText>
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Customer Email"></h:outputText>
+							</f:facet>
+							<h:outputText value="#{customer.email}"></h:outputText>
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Customer Birthday"></h:outputText>
+							</f:facet>
+							<h:outputText value="#{customer.birthday}"></h:outputText>
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Customer Gender"></h:outputText>
+							</f:facet>
+							<h:outputText value="#{customer.gender}"></h:outputText>
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Customer Age"></h:outputText>
+							</f:facet>
+							<h:outputText value="#{customer.age}"></h:outputText>
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Customer Income"></h:outputText>
+							</f:facet>
+							<h:outputText value="#{customer.income}"></h:outputText>
+						</p:column>
+
+						<p:column width="auto">
+							<p:growl id="message" showDetail="true" />
+
+							<p:commandButton value="Delete"
+								action="#{customerController.DeleteCustomer(customer)}"
+								update="message" class="btn btn-danger">
+								<p:confirm header="Confirmation" message="Borrar Customer?"
+									icon="pi pi-exclamation-triangle" />
+							</p:commandButton>
+
+							<p:confirmDialog global="true" showEffect="fade"
+								hideEffect="fade">
+								<p:commandButton value="Si" type="button"
+									styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+								<p:commandButton value="No" type="button"
+									styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+							</p:confirmDialog>
+
+							<p:commandButton
+								action="#{customerController.UpdateHandler(customer)}"
+								class="btn btn-primary" value="Update" update="userForm" />
+						</p:column>
+					</p:dataTable>
+				</h:form>
+
+			</div>
+
+			<div class="col"></div>
+
+		</div>
+
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col text-center"></div>
+		</div>
+	</div>
+</h:body>
+
+</html>

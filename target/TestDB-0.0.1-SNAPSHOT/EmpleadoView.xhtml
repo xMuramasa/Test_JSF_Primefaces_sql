@@ -1,0 +1,36 @@
+<html xmlns="http://www.w3.org/1999/xhttp"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:a="http://java.sun.com/jsf/passthrough"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui"> 
+	
+<h:head>Empleados</h:head>	
+<p:outputLabel value="Empleados Vista"></p:outputLabel>
+<p:dataTable value="#{VistaEmpleadoManagedBean.empleados}" var="empleado">
+
+	<h:form id="myform">
+    	User: <h:inputText id="name" value="#{persona.username}" a:placeholder="insert name"/>
+    	<br/><br/>
+    	Password: <h:inputText id="pass" value="#{persona.pass}" a:placeholder="insert password"/>
+    	<br/><br/>
+    	<h:commandButton value="Submit!" action="myresponse"/>
+    	
+	</h:form>
+
+	
+	<p:column>
+	
+		<f:facet name="header">
+			<h:outputText value="Employee ID"></h:outputText>
+		</f:facet>
+		<h:outputText value="#{empleado.EmpleadoId}"></h:outputText>
+	</p:column>
+	<p:column>
+		<f:facet name="header">
+			<h:outputText value="Employee Name"></h:outputText>
+		</f:facet>
+		<h:outputText value="#{empleado.NombreEmpleado}"></h:outputText>
+	</p:column>
+</p:dataTable>
+</html>

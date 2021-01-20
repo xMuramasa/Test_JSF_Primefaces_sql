@@ -1,0 +1,31 @@
+<html xmlns="http://www.w3.org/1999/xhttp"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+
+<h:body>
+
+	<p:outputLabel value="Vista Empleados"></p:outputLabel>
+	<p:dataTable value="#{vistaEmpleadoManagedBean.empleados}"
+		var="empleado">
+
+		<p:column>
+			<f:facet name="header">
+				<h:outputText value="Employee ID"></h:outputText>
+			</f:facet>
+			<h:outputText value="#{empleado.empleadoId}"></h:outputText>
+		</p:column>
+		<p:column>
+			<f:facet name="header">
+				<h:outputText value="Employee Name"></h:outputText>
+			</f:facet>
+			<h:outputText value="#{empleado.nombreEmpleado}"></h:outputText>
+		</p:column>
+	</p:dataTable>
+
+
+</h:body>
+</html>

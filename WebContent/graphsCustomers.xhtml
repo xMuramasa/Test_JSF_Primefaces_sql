@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<style>
+.centered {
+	position: relative;
+	margin: 5% auto;
+}
+</style>
+	<title>Gráficos Cusotmers</title>
+	<h:outputStylesheet name="/css/bootstrap.min.css" />
+</h:head>
+
+
+<h:body style="background-color: #8eedd7">
+	<h:form id="userForm">
+
+		<p:chart type="pie" model="#{customerController.pieModel2}"
+			style="width:400px;height:300px" />
+			
+		<p:chart type="line" model="#{customerController.lineModel2}" style="height:300px;"/>
+
+
+		<p:commandButton action="index.xhtml?faces-redirect=true"
+			value="Registro Usuarios" class="btn btn-primary">
+		</p:commandButton>
+
+		<p:commandButton action="Customers.xhtml?faces-redirect=true"
+			value="Customers" style="margin-right:20px;"
+			class="btn btn-primary">
+		</p:commandButton>
+
+	</h:form>
+
+
+</h:body>
+
+</html>
