@@ -1,4 +1,7 @@
 # Test_JSF_Primefaces_sql
+### Explicacion
+
+Montado con eclipse ( maven proyect ) en conjunto con tomcat (jsf)
 
 ### MODELO
 
